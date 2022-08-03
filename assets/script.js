@@ -86,6 +86,12 @@ function displayForecast(d) {
                     <div class="media-content">
                         <p class="title is-4">${eachDay}</p>
                         <p class="subtitle is-6">Temp: ${dailyFar} F</p>
+                        ${dailyFar >= 100 ?
+                            "<p>The heat is out of this world,<br> don't forget to stay hydrated!</p>" : ""
+                        }
+                        ${dailyFar <= 50 ?
+                            "<p> Pluto is warmer this time of year, <br> wear a Jacket!</p>" : ""
+                        }
                     </div>
                 </div>
             </div>
