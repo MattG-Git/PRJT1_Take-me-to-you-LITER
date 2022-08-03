@@ -6,10 +6,41 @@ var buttonEl = $("button");
 function runApis() {
     var cityInput = searchBarEl.val().trim();
     city = cityInput;
+    fetchBeerApi();
     fetchWeatherApi();
     displaySearchCity();
 };
 
+function fetchBeerApi() {
+    fetch("https://api.openbrewerydb.org/breweries?by_city=" + city + "&per_page=5")
+    // the following code converts to json
+    .then(function(resp) { return resp.json() }) 
+    .then(function(data) {
+    console.log(data);
+    displayBreweries(data);
+    })
+    .catch(function() {
+    // catch any errors
+    });
+};
+
+function displayBreweries(d) {
+    $("#breweryList").empty();
+    console.log(d);
+    for (let i = 0; i < d.length; i ++) {
+        var brewName = $("<h3>").text(d[i].name).attr("class", "breweryName");
+        var brewAddress = $("<p>").text(d[i].street).attr("class", "breweryAddress");
+        var brewPostal = $("<p>").text(d[i].postal_code).attr("class","breweryZip");
+        var brewUrl = $("<a>").text(d[i].website_url).attr("href", d[i].website_url).attr("class", "breweryLink");
+
+        $("#breweryList").append(
+            brewName,
+            brewAddress,
+            brewPostal,
+            brewUrl
+        );
+    }
+};
 
 function fetchWeatherApi() {
     fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey)
