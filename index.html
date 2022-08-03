@@ -8,24 +8,36 @@
 
     <!--this links the css style sheet--> 
     <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css'>
-<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!--this links the Bulma framework-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+
+    <!--This links to fontawesome for any icons-->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
+
 <body style="background-image: url('./assets/images/guillermo-ferla-YM-jlUioGRc-unsplash.jpg');">
     <main>
-        <h1 style="title;">TAKE ME TO YOUR LITER</h1>
+        <h1>TAKE ME TO YOUR LITER</h1>
         <img src="./assets/images/Take me to your litre img.png" alt="Alien Logo">
-        <input placeholder="Search City">
+        <input placeholder="Search City" id="searchBar">
         <button>Search</button>
-        <div>
-           <!--This is where the weather forcast will be displayed--> 
+        <div id="cityInput">
+            <!--this is where the searched city will show up-->
         </div>
-        <ul>
-            <!--This is where the list of breweries will show.-->
-        </ul>
+        <section class="section">
+            <div class="columns" id="weatherForecast">
+                <!--This is where the weather forcast will be displayed--> 
+            </div>
+        </section>
+        <div id="breweryList">
+        <!--This is where the list of breweries will show.-->
+        </div>>
     </main>
 
-    <!--this links the scripts.js file-->
+    <!- THIS LINKS JQUERY & MOMENT SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
 </html>
