@@ -1,16 +1,31 @@
+//this is the API Key used to access the Open Weather API
+//These are the global variables 
 var apiKey = "f92c4824a1f3e36129b27679f0d59f91";
 var city = "";
 var searchBarEl = $("#searchBar");
 var buttonEl = $("button");
+var cityList = [];
+var headerOn = false;
 
+//this runs all of the subsequent functions
 function runApis() {
     var cityInput = searchBarEl.val().trim();
     city = cityInput;
+
+    function storedCity() {
+        cityList.push(city)
+        localStorage.setItem("cityList", JSON.stringify(cityList));
+        console.log(localStorage, cityList);
+    };
+
+    storedCity();
     fetchBeerApi();
     fetchWeatherApi();
     displaySearchCity();
+    displayHeader();
 };
 
+//This function fetches and utilizes openBrewery db API
 function fetchBeerApi() {
     fetch("https://api.openbrewerydb.org/breweries?by_city=" + city + "&per_page=5")
     // the following code converts to json
@@ -24,20 +39,35 @@ function fetchBeerApi() {
     });
 };
 
+//This function makes the "Breweries" header display when the list of breweries shows up
+function displayHeader() {
+    //this if/else statement ensures that when two cities are searched, the header only shows up once
+    if (headerOn) {
+        return;
+    }else {
+        var header = $("<h2>").text("🍻 BREWERIES 🍻");
+        $("#breweryHeader").append(
+            header
+        )
+        headerOn = true
+    }
+};
+
+//this function displays the list of breweries onto the page
 function displayBreweries(d) {
     $("#breweryList").empty();
     console.log(d);
     for (let i = 0; i < d.length; i ++) {
-        var brewName = $("<h3>").text(d[i].name).attr("class", "breweryName");
+        //the brewURL is displaying on the page but is hyperlinked with the url to the breweries website
+        var brewUrl = $("<a>").text(d[i].name).attr("href", d[i].website_url).attr("class", "breweryLink");
         var brewAddress = $("<p>").text(d[i].street).attr("class", "breweryAddress");
         var brewPostal = $("<p>").text(d[i].postal_code).attr("class","breweryZip");
-        var brewUrl = $("<a>").text(d[i].website_url).attr("href", d[i].website_url).attr("class", "breweryLink");
+
 
         $("#breweryList").append(
-            brewName,
+            brewUrl,
             brewAddress,
-            brewPostal,
-            brewUrl
+            brewPostal
         );
     }
 };
@@ -55,6 +85,7 @@ function fetchWeatherApi() {
     });
 };
 
+//this function displays the cities that have been searched on the page
 function displaySearchCity() {
     var  cityInput = $("<h2>").text(city);
     $("#cityInput").append(
@@ -62,8 +93,9 @@ function displaySearchCity() {
     );
 }
 
+//this function displays the weather forecast on the page
 function displayForecast(d) {
-    $("weatherForecast").empty();
+    $("#weatherForecast").empty();
     var date = 0;
     for (let i = 0; i < d.list.length; i = i + 8){
     //console.log(i,d.list[i]);
@@ -73,6 +105,7 @@ function displayForecast(d) {
     var dailyIconUrl = "https://openweathermap.org/img/wn/" + dailyIcon + ".png";
     var dailyFar = Math.round(((parseFloat(d.list[i].main.temp)-273.15)*1.8)+32);
 
+    //this code is utilizing bulma to stylize the weather forecast into a card format
     $("#weatherForecast").append(
         `<div class="card is-one-third">
             <div class="card-content">
@@ -87,10 +120,13 @@ function displayForecast(d) {
                         <p class="title is-4">${eachDay}</p>
                         <p class="subtitle is-6">Temp: ${dailyFar} F</p>
                         ${dailyFar >= 100 ?
-                            "<p>The heat is out of this world,<br> don't forget to stay hydrated!</p>" : ""
+                            "<p>👽  The heat is out of this world,<br> don't forget to stay hydrated!</p>" : ""
                         }
                         ${dailyFar <= 50 ?
-                            "<p> Pluto is warmer this time of year, <br> wear a Jacket!</p>" : ""
+                            "<p> Pluto 🪐 is warmer this time of year, <br> wear a Jacket!</p>" : ""
+                        }
+                        ${dailyFar < 99 && dailyFar > 51 ?
+                            "<p>It's a great day to enjoy <br> a beer on Earth!🍺  </p>" : ""
                         }
                     </div>
                 </div>
