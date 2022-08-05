@@ -1,3 +1,5 @@
+//this is the API Key used to access the Open Weather API
+//These are the global variables 
 var apiKey = "f92c4824a1f3e36129b27679f0d59f91";
 var city = "";
 var searchBarEl = $("#searchBar");
@@ -5,6 +7,7 @@ var buttonEl = $("button");
 var cityList = [];
 var headerOn = false;
 
+//this runs all of the subsequent functions
 function runApis() {
     var cityInput = searchBarEl.val().trim();
     city = cityInput;
@@ -22,6 +25,7 @@ function runApis() {
     displayHeader();
 };
 
+//This function fetches and utilizes openBrewery db API
 function fetchBeerApi() {
     fetch("https://api.openbrewerydb.org/breweries?by_city=" + city + "&per_page=5")
     // the following code converts to json
@@ -35,7 +39,9 @@ function fetchBeerApi() {
     });
 };
 
+//This function makes the "Breweries" header display when the list of breweries shows up
 function displayHeader() {
+    //this if/else statement ensures that when two cities are searched, the header only shows up once
     if (headerOn) {
         return;
     }else {
@@ -47,10 +53,12 @@ function displayHeader() {
     }
 };
 
+//this function displays the list of breweries onto the page
 function displayBreweries(d) {
     $("#breweryList").empty();
     console.log(d);
     for (let i = 0; i < d.length; i ++) {
+        //the brewURL is displaying on the page but is hyperlinked with the url to the breweries website
         var brewUrl = $("<a>").text(d[i].name).attr("href", d[i].website_url).attr("class", "breweryLink");
         var brewAddress = $("<p>").text(d[i].street).attr("class", "breweryAddress");
         var brewPostal = $("<p>").text(d[i].postal_code).attr("class","breweryZip");
@@ -77,6 +85,7 @@ function fetchWeatherApi() {
     });
 };
 
+//this function displays the cities that have been searched on the page
 function displaySearchCity() {
     var  cityInput = $("<h2>").text(city);
     $("#cityInput").append(
@@ -84,6 +93,7 @@ function displaySearchCity() {
     );
 }
 
+//this function displays the weather forecast on the page
 function displayForecast(d) {
     $("#weatherForecast").empty();
     var date = 0;
@@ -95,6 +105,7 @@ function displayForecast(d) {
     var dailyIconUrl = "https://openweathermap.org/img/wn/" + dailyIcon + ".png";
     var dailyFar = Math.round(((parseFloat(d.list[i].main.temp)-273.15)*1.8)+32);
 
+    //this code is utilizing bulma to stylize the weather forecast into a card format
     $("#weatherForecast").append(
         `<div class="card is-one-third">
             <div class="card-content">
