@@ -9,8 +9,8 @@ html {
     
 }
 #cityInput {
-    color: greenyellow;
     text-align: center;
+    font-size: 40px;
 };
 
 * {

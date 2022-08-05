@@ -24,17 +24,19 @@
     <main>
         <h1 class="mb-4 has-text-success is-size-2">
             <div class="is-primary has-tect-primary">
-             <strong>TAKE ME TO YOUR LITER</strong>
+             <strong style="font-family: 'Play', sans-serif;">TAKE ME TO YOUR LITER</strong>
             </div>
         </h1>
-    <section class="container">
-        <img  src="./assets/images/Take me to your litre img.png" alt="Alien Logo">
-        <input placeholder="Search City" id="searchBar">
-        <button>Search</button>
-        <div id="cityInput">
-            <!--this is where the searched city will show up-->
-        </div>
-    </section>
+         <section class="container">
+            <img  src="./assets/images/Take me to your litre_nobackground_img.png" alt="Alien Logo">
+            <input placeholder="Search City" id="searchBar" class="input is-primary" style="max-width: 300px;">
+            <button class="button is-success m-5" >Search</button>
+        </section>
+        <section>
+            <div id="cityInput" style="font-family: 'Play', sans-serif;">
+                <!--this is where the searched city will show up-->
+            </div>
+        </section>
         <section class="section">
             <div class="columns is-justify-content-center" id="weatherForecast">
                 <!--This is where the weather forcast will be displayed--> 
@@ -44,7 +46,7 @@
             <div id="breweryHeader" class="is-size-2 is-underlined has-text-weight-bold has-text-warning-dark">
                 <!--this is where the brewery list header will display-->
             </div>
-            <div id="breweryList" class="p-0 has-text-centered has-text-white" style="font-family: 'Play', sans-serif;">
+            <div id="breweryList" class="p-0 has-text-centered has-text-white">
                 <!--This is where the list of breweries will show.-->
             </div>
         </section>
