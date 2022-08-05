@@ -59,7 +59,7 @@ function displayBreweries(d) {
     console.log(d);
     for (let i = 0; i < d.length; i ++) {
         //the brewURL is displaying on the page but is hyperlinked with the url to the breweries website
-        var brewUrl = $("<a>").text(d[i].name).attr("href", d[i].website_url).attr("class", "breweryLink");
+        var brewUrl = $("<a>").text(d[i].name).attr("href", d[i].website_url).attr("class", "breweryLink").attr("class", "has-text-warning");
         var brewAddress = $("<p>").text(d[i].street).attr("class", "breweryAddress");
         var brewPostal = $("<p>").text(d[i].postal_code).attr("class","breweryZip");
 
