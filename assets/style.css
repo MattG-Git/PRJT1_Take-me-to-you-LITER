@@ -1,33 +1,10 @@
-html { 
-    background-image: url(./images/guillermo-ferla-YM-jlUioGRc-unsplash.jpg) ;
-    background-position: center;
-    background-repeat:  no-repeat;
+body {
+    background-image: url ('./assets/images/guillermo-ferla-YM-jlUioGRc-unsplash.jpg');
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: #999;
-    height: 100vh;
-    
-}
-#cityInput {
-    color: greenyellow;
-    text-align: center;
 };
 
-* {
-    margin: 0;
-    padding: 0;
-}
-.mb-4 {
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-
-
-}
-.container { 
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   font-size: 40px;
-}
+#cityInput {
+    color: greenyellow;
+};
