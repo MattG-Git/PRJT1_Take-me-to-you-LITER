@@ -107,7 +107,7 @@ function displayForecast(d) {
 
     //this code is utilizing bulma to stylize the weather forecast into a card format
     $("#weatherForecast").append(
-        `<div class="card is-one-third">
+        `<div class="card has-text-centered has-text-success has-background-info-light" style="font-family: 'Play', sans-serif;">
             <div class="card-content">
                 <div class="media">
                 <div class="media-left">
