@@ -126,7 +126,7 @@ function displayForecast(d) {
                         ${dailyFar <= 50 ?
                             "<p> Pluto 🪐 is warmer this time of year, <br> wear a Jacket!</p>" : ""
                         }
-                        ${dailyFar < 99 && dailyFar > 51 ?
+                        ${dailyFar <= 99 && dailyFar >= 51 ?
                             "<p>It's a great day to enjoy <br> a beer on Earth!🍺  </p>" : ""
                         }
                     </div>
