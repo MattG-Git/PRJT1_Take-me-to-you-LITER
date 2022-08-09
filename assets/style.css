@@ -1,3 +1,4 @@
+/* Galaxy background image */
 html { 
     background-image: url(./images/guillermo-ferla-YM-jlUioGRc-unsplash.jpg) ;
     background-position: center;
@@ -8,26 +9,48 @@ html {
     height: 100vh;
     
 }
+/* Customizes cursor to a cute little spaceship */
+html {
+	cursor: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 50" height="64" width="64"><text y="28" font-size="32">🛸</text><path d="M0,2 L0,0 L2,0" fill="red" /></svg>'), auto;
+}
+
+/* Centers search input */
 #cityInput {
     text-align: center;
     font-size: 40px;
 };
-
+/* Adds margins to thhe page */
 * {
     margin: 0;
     padding: 0;
 }
+/* Centers "Take Me To Your Liter" text */
 .mb-4 {
     display: flex;
     justify-content: center;
-    padding-top: 10px;
+    padding-top: 20px;
     padding-bottom: 10px;
-
-
 }
+
+/*Centers content on page  */
 .container { 
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
 }
+
+/* Makes text a glowing neon green */
+.neonText {
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa;
+  }
+
